@@ -5,7 +5,7 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class Client implements Runnable{
+public class Client{
     private Socket socket = null;
     private DataInputStream input = null;
     private DataOutputStream out = null;
@@ -26,28 +26,12 @@ public class Client implements Runnable{
         }
 
 
-        /*
-        String line = " ";
-
-        while (!line.equals(".")){
-            try{
-                line = input.readLine();
-                out.writeUTF(line);
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-
-         */
-    }
-
-    public static void main(String[] args) {
-        Client client = new Client("localHost", 1234);
-        client.run();
     }
 
 
-    private void sendMessage(String message) {
+
+
+    public void sendMessage(String message) {
         try {
             out.writeUTF(message);
 
@@ -56,36 +40,4 @@ public class Client implements Runnable{
         }
     }
 
-    @Override
-    public void run() {
-        long millisStart = System.currentTimeMillis();
-        long millisEnd = System.currentTimeMillis();
-
-        while(true) {
-
-            millisEnd = System.currentTimeMillis();
-
-            //System.out.println(millisEnd-millisStart);
-            if(millisEnd-millisStart >= 3000){
-                millisStart=System.currentTimeMillis();
-                sendMessage("str");
-            }
-/*
-            Thread thread = new Thread();
-
-            sendMessage("str");
-
-            try {
-
-                System.out.println(1);
-                thread.sleep(5000);
-                System.out.println(2);
-                sendMessage("str");
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }
-
- */
-        }
-    }
 }
