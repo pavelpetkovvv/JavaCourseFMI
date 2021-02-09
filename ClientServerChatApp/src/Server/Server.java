@@ -3,43 +3,29 @@ import java.net.*;
 import java.io.*;
 
 public class Server {
-    private Socket socket = null;
-    private ServerSocket server = null;
-    private DataInputStream in = null;
 
-    public Server(int port){
-        try {
-            server = new ServerSocket(port);
-            System.out.println("Server started");
+    public static void main(String[] args)throws IOException {
+        ServerSocket serverSocket = new ServerSocket(8080);
+        while(true){
+            Socket socket = null;
 
-            socket = server.accept();
-            System.out.println("Client accepted");
+            try {
+                socket = serverSocket.accept();
 
-            in = new DataInputStream(socket.getInputStream());
+                System.out.println("A new client is connected : " + socket);
 
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                DataInputStream in = new DataInputStream(socket.getInputStream());
+                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-            String line = "";
+                System.out.println("Assigning new thread for this client");
 
-            while (true){
-                try{
-                    line = in.readUTF();
-                    System.out.println(line);
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+                Thread t = new ClientHandler(in, out, socket);
+
+                t.start();
+            }catch (Exception e){
+                socket.close();
+                e.printStackTrace();
             }
-
-        }catch (IOException e){
-            e.printStackTrace();
         }
-
-
-
-    }
-
-
-    public static void main(String[] args) {
-        Server server = new Server(1234);
     }
 }

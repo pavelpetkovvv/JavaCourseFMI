@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class Controller {
 
-    Client client = new Client("localHost", 1234);
+    Client client = new Client("localHost", 8080);
 
     @FXML
     private javafx.scene.control.Button sendButton;
@@ -19,11 +19,11 @@ public class Controller {
     private javafx.scene.control.TextField messageToSend;
 
     @FXML
-    private javafx.scene.control.TextField recievedMessage;
+    private javafx.scene.control.TextField receivedMessage;
 
     public void setSendButton(ActionEvent e){
         client.sendMessage(messageToSend.getText());
-        //client.run();
+        receivedMessage.setText(client.readMessage());
     }
 
 }

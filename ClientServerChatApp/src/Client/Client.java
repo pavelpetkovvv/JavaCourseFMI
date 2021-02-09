@@ -15,7 +15,7 @@ public class Client{
             socket = new Socket(address, port);
             System.out.println("connected");
 
-            input = new DataInputStream(System.in);
+            input = new DataInputStream(socket.getInputStream());
 
             out = new DataOutputStream(socket.getOutputStream());
 
@@ -29,8 +29,6 @@ public class Client{
     }
 
 
-
-
     public void sendMessage(String message) {
         try {
             out.writeUTF(message);
@@ -39,5 +37,17 @@ public class Client{
             e.printStackTrace();
         }
     }
+
+    public String readMessage(){
+
+        try {
+            return input.readUTF();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 
 }
