@@ -15,11 +15,13 @@ public class Server {
             socket = server.accept();
             System.out.println("Client accepted");
 
-            in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+            in = new DataInputStream(socket.getInputStream());
+
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
             String line = "";
 
-            while (!line.equals(".")){
+            while (true){
                 try{
                     line = in.readUTF();
                     System.out.println(line);

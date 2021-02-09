@@ -17,7 +17,6 @@ public class Client implements Runnable{
 
             input = new DataInputStream(System.in);
 
-
             out = new DataOutputStream(socket.getOutputStream());
 
         }catch (UnknownHostException e){
@@ -50,11 +49,8 @@ public class Client implements Runnable{
 
     private void sendMessage(String message) {
         try {
-            PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            out.writeUTF(message);
 
-            writer.write(message);
-            //writer.flush();
-            writer.close();
         }catch (IOException e){
             e.printStackTrace();
         }
