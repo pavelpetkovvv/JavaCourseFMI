@@ -1,10 +1,13 @@
 package Server;
+import Accounts.AccountsDatabase;
+
 import java.net.*;
 import java.io.*;
 
 public class Server {
 
     public static void main(String[] args)throws IOException {
+        AccountsDatabase database;
         ServerSocket serverSocket = new ServerSocket(8080);
         while(true){
             Socket socket = null;
