@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ExchangeRate62302.iml" filepath="$PROJECT_DIR$/ExchangeRate62302.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model.com/model.com.iml" filepath="$PROJECT_DIR$/model.com/model.com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server.com/server.com.iml" filepath="$PROJECT_DIR$/server.com/server.com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/view.client/view.client.iml" filepath="$PROJECT_DIR$/view.client/view.client.iml" />
+    </modules>
+  </component>
+</project>
